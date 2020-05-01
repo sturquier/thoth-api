@@ -47,6 +47,15 @@ class Article
      */
     private $website;
 
+    public function __construct($title, $description, $createdAt, $url, $image)
+    {
+        $this->setTitle($title);
+        $this->setDescription($description);
+        $this->setCreatedAt($createdAt);
+        $this->setUrl($url);
+        $this->setImage($image);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
