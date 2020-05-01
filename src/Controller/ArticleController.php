@@ -12,15 +12,15 @@ use App\Entity\Article;
 class ArticleController extends AbstractController
 {
     /**
-     * Fetch all articles
-     *
-     * Return an array[] of articles order by creation date DESC
+     * Retrieves the collection of Article resources.
      *
      * @Rest\View(serializerGroups={"getArticles"})
      * @Rest\Get("/articles")
+     *
+     * @SWG\Tag(name="Article")
      * @SWG\Response(
      *     response=200,
-     *     description="A filled array if there are articles or an empty one if there is none",
+     *     description="A filled array if there are articles or an empty one if there is none.",
      *     @SWG\Schema(
      *         type="array",
      *         @SWG\Items(ref=@Model(type=Article::class, groups={"getArticles"}))

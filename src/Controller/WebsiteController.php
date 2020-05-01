@@ -12,15 +12,15 @@ use App\Entity\Website;
 class WebsiteController extends AbstractController
 {
     /**
-     * Fetch all websites
-     *
-     * Return an array[] of websites order by alphabetical name (ASC)
+     * Retrieves the collection of Website resources.
      *
      * @Rest\View(serializerGroups={"getWebsites"})
      * @Rest\Get("/websites")
+     *
+     * @SWG\Tag(name="Website")
      * @SWG\Response(
      *     response=200,
-     *     description="A filled array if there are websites or an empty one if there is none",
+     *     description="A filled array if there are websites or an empty one if there is none.",
      *     @SWG\Schema(
      *         type="array",
      *         @SWG\Items(ref=@Model(type=Website::class, groups={"getWebsites"}))
