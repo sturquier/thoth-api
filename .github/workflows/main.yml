@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install
+      - name: Run tests
+        run: |
+          cp phpunit.xml.dist phpunit.xml
+          composer test
+      - name: Upload coverage to CodeCov
+        uses: codecov/codecov-action@v1
