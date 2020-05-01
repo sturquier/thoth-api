@@ -4,8 +4,8 @@
     "type": "project",
     "license": "MIT",
     "scripts": {
-        "test": "php .\\bin\\phpunit --configuration ./phpunit.xml --coverage-clover ./coverage/clover.xml",
-        "report-html": "php .\\bin\\phpunit --configuration ./phpunit.xml --coverage-html ./coverage",
+        "test": "php ./bin/phpunit --configuration ./phpunit.xml --coverage-clover ./coverage/clover.xml",
+        "report-html": "php ./bin/phpunit --configuration ./phpunit.xml --coverage-html ./coverage",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
