@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -15,31 +16,37 @@ class Article
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @JMS\Groups({"getArticles"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getArticles"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @JMS\Groups({"getArticles"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @JMS\Groups({"getArticles"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getArticles"})
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Groups({"getArticles"})
      */
     private $image;
 
