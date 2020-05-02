@@ -6,6 +6,9 @@
     "scripts": {
         "test": "php ./bin/phpunit --configuration ./phpunit.xml --coverage-clover ./coverage/clover.xml",
         "report-html": "php ./bin/phpunit --configuration ./phpunit.xml --coverage-html ./coverage",
+        "compile": [
+            "php bin/console doctrine:migrations:migrate --no-interaction"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
