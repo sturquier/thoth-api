@@ -18,3 +18,9 @@ jobs:
           composer test
       - name: Upload coverage to CodeCov
         uses: codecov/codecov-action@v1
+      - name: Add Heroku remote
+        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+      - name: Rewrite branches
+        run: git filter-branch -- --all
+      - name: Deploy to Heroku
+        run: git push heroku master --force
