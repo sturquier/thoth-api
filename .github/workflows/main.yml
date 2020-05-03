@@ -16,6 +16,8 @@ jobs:
         run: |
           cp phpunit.xml.dist phpunit.xml
           composer test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Upload coverage to CodeCov
         uses: codecov/codecov-action@v1
       - name: Add Heroku remote
