@@ -13,4 +13,4 @@ Web development trends & news
 * Create DB `php bin/console doctrine:database:create`
 * Run migrations `php bin/console doctrine:migrations:migrate`
 * Load fixtures `php bin/console doctrine:fixtures:load`
-* Run `php -S localhost:8080 -t public/`
+* Run server `php bin/console server:run`
