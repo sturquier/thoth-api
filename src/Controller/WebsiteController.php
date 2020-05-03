@@ -24,7 +24,7 @@ class WebsiteController extends AbstractController
      * @SWG\Tag(name="Website")
      * @SWG\Response(
      *     response=200,
-     *     description="A filled array if there are websites or an empty one if there is none.",
+     *     description="Website collection response.",
      *     @SWG\Schema(
      *         type="array",
      *         @SWG\Items(ref=@Model(type=Website::class, groups={"getWebsites"}))

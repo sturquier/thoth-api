@@ -4,8 +4,17 @@ nelmio_api_doc:
             title: Thoth API
             version: 1.0.0
         basePath: '/'
+        securityDefinitions:
+            apiKey:
+                type: apiKey
+                description: Value for the Authorization header
+                name: authorization
+                in: header
+        security:
+            - apiKey: []
 
     areas:
         path_patterns:
             - ^/articles
+            - ^/users
             - ^/websites
