@@ -19,9 +19,9 @@ class WebsiteEntityTest extends AbstractEntityTest
 
     public function testConstructor()
     {
-        $this->assertEquals(NULL, $this->website->getId());
-        $this->assertEquals(NULL, $this->website->getName());
-        $this->assertEquals(NULL, $this->website->getUrl());
+        $this->assertNull($this->website->getId());
+        $this->assertNull($this->website->getName());
+        $this->assertNull($this->website->getUrl());
         $this->assertEquals(new ArrayCollection(), $this->website->getArticles());
     }
 

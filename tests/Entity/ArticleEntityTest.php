@@ -18,7 +18,7 @@ class ArticleEntityTest extends AbstractEntityTest
 
     public function testConstructor()
     {
-        $this->assertEquals(NULL, $this->article->getId());
+        $this->assertNull($this->article->getId());
         $this->assertEquals('Title', $this->article->getTitle());
         $this->assertEquals('Description lorem ipsum', $this->article->getDescription());
         $this->assertTrue($this->article->getCreatedAt() instanceof \DateTime);
