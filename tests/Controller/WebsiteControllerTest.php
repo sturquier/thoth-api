@@ -2,15 +2,34 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
+use App\Tests\Controller\AbstractControllerTest;
 
-class WebsiteControllerTest extends WebTestCase
+class WebsiteControllerTest extends AbstractControllerTest
 {
-    public function testGetWebsites()
+    protected function setUp(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/websites');
+        parent::setUp();
+    }
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+    }
+
+    public function testUnauthorizedRequest()
+    {
+        $this->client->request('GET', '/websites');
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testAuthorizedRequest()
+    {
+        $this->login();
+
+        $this->client->request('GET', '/websites');
+
+        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
     }
 }
