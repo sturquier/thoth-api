@@ -1,4 +1,7 @@
 {
+    "brainmaestro/composer-git-hooks": {
+        "version": "v2.8.3"
+    },
     "composer/semver": {
         "version": "1.5.1"
     },
