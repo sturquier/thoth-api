@@ -2,7 +2,6 @@
 
 namespace App\Tests\Repository;
 
-use App\Tests\Repository\AbstractRepositoryTest;
 use App\Repository\UserRepository;
 use App\Entity\User;
 

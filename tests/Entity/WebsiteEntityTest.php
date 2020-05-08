@@ -3,7 +3,6 @@
 namespace App\Tests\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Tests\Entity\AbstractEntityTest;
 
 class WebsiteEntityTest extends AbstractEntityTest
 {
@@ -46,9 +45,9 @@ class WebsiteEntityTest extends AbstractEntityTest
 
     public function testArticleRemoval()
     {
-      $this->website->addArticle($this->article);
-      $this->assertTrue(!$this->website->getArticles()->isEmpty());
-      $this->website->removeArticle($this->article);
-      $this->assertTrue($this->website->getArticles()->isEmpty());
+        $this->website->addArticle($this->article);
+        $this->assertTrue(!$this->website->getArticles()->isEmpty());
+        $this->website->removeArticle($this->article);
+        $this->assertTrue($this->website->getArticles()->isEmpty());
     }
 }

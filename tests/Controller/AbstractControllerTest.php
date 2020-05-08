@@ -20,7 +20,7 @@ abstract class AbstractControllerTest extends WebTestCase
 
     protected function tearDown(): void
     {
-        $this->client = NULL;
+        $this->client = null;
     }
 
     protected function login()
@@ -33,7 +33,7 @@ abstract class AbstractControllerTest extends WebTestCase
 
         $user = $em->getRepository(User::class)->findOneBy([]);
         $token = new PostAuthenticationGuardToken($user, $firewallName, $user->getRoles());
-        
+
         $session->set('_security_'.$firewallName, serialize($token));
         $session->save();
 

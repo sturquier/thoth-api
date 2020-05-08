@@ -18,7 +18,6 @@ use App\Entity\User;
  */
 class UserController extends AbstractController
 {
-
     private $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)

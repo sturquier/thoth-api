@@ -2,8 +2,6 @@
 
 namespace App\Tests\Entity;
 
-use App\Tests\Entity\AbstractEntityTest;
-
 class ArticleEntityTest extends AbstractEntityTest
 {
     protected function setUp(): void

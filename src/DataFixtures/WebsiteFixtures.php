@@ -12,52 +12,52 @@ class WebsiteFixtures extends Fixture
     {
         $websites = [
         [
-            'name'      => 'CSS Tricks',
-            'url'       => 'https://css-tricks.com/archives/'
+            'name' => 'CSS Tricks',
+            'url' => 'https://css-tricks.com/archives/'
         ],
         [
-            'name'      => 'CodeBurst',
-            'url'       => 'https://codeburst.io/'
+            'name' => 'CodeBurst',
+            'url' => 'https://codeburst.io/'
         ],
         [
-            'name'      => 'Hackernoon',
-            'url'       => 'https://hackernoon.com/tagged/coding/'
+            'name' => 'Hackernoon',
+            'url' => 'https://hackernoon.com/tagged/coding/'
         ],
         [
-            'name'      => 'Laravel News',
-            'url'       => 'https://laravel-news.com/blog'
+            'name' => 'Laravel News',
+            'url' => 'https://laravel-news.com/blog'
         ],
         [
-            'name'      => 'LinuxTechLab',
-            'url'       => 'https://linuxtechlab.com/'
+            'name' => 'LinuxTechLab',
+            'url' => 'https://linuxtechlab.com/'
         ],
         [
-            'name'      => 'LogRocket',
-            'url'       => 'https://blog.logrocket.com/'
+            'name' => 'LogRocket',
+            'url' => 'https://blog.logrocket.com/'
         ],
         [
-            'name'      => 'NetBasal',
-            'url'       => 'https://netbasal.com/'
+            'name' => 'NetBasal',
+            'url' => 'https://netbasal.com/'
         ],
         [
-            'name'      => 'Octo Talks',
-            'url'       => 'https://blog.octo.com/'
+            'name' => 'Octo Talks',
+            'url' => 'https://blog.octo.com/'
         ],
         [
-            'name'      => 'Putain de Code',
-            'url'       => 'https://putaindecode.io/articles'
+            'name' => 'Putain de Code',
+            'url' => 'https://putaindecode.io/articles'
         ],
         [
-            'name'      => 'Scotch.io',
-            'url'       => 'https://scotch.io/tutorials'
+            'name' => 'Scotch.io',
+            'url' => 'https://scotch.io/tutorials'
         ],
         [
-            'name'      => 'Think To Code',
-            'url'       => 'https://thinktocode.com/'
+            'name' => 'Think To Code',
+            'url' => 'https://thinktocode.com/'
         ],
         [
-            'name'      => 'Towards Data Science',
-            'url'       => 'https://towardsdatascience.com/'
+            'name' => 'Towards Data Science',
+            'url' => 'https://towardsdatascience.com/'
         ]];
 
         foreach ($websites as $ws) {

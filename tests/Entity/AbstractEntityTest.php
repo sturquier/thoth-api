@@ -28,8 +28,8 @@ abstract class AbstractEntityTest extends TestCase
 
     protected function tearDown(): void
     {
-        $this->article = NULL;
-        $this->user = NULL;
-        $this->website = NULL;
+        $this->article = null;
+        $this->user = null;
+        $this->website = null;
     }
 }

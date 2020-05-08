@@ -2,9 +2,6 @@
 
 namespace App\Tests\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use App\Tests\Entity\AbstractEntityTest;
-
 class UserEntityTest extends AbstractEntityTest
 {
     protected function setUp(): void

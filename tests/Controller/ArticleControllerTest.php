@@ -3,7 +3,6 @@
 namespace App\Tests\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
-use App\Tests\Controller\AbstractControllerTest;
 
 class ArticleControllerTest extends AbstractControllerTest
 {

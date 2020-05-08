@@ -20,6 +20,6 @@ abstract class AbstractRepositoryTest extends KernelTestCase
         parent::tearDown();
 
         $this->em->close();
-        $this->em = NULL;
+        $this->em = null;
     }
 }
