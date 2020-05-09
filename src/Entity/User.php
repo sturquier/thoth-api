@@ -39,11 +39,6 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", unique=true, nullable=true)
-     */
-    private $token;
-
     public function getId(): ?int
     {
         return $this->id;
