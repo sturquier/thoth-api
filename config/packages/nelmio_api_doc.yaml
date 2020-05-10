@@ -5,13 +5,13 @@ nelmio_api_doc:
             version: 1.0.0
         basePath: '/'
         securityDefinitions:
-            apiKey:
+            Bearer:
                 type: apiKey
                 description: Value for the Authorization header
-                name: authorization
+                name: Authorization
                 in: header
         security:
-            - apiKey: []
+            - Bearer: []
 
     areas:
         path_patterns:

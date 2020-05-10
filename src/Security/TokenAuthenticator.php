@@ -2,13 +2,14 @@
 
 namespace App\Security;
 
-use App\Entity\User;
+use App\Entity\AuthenticationToken;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
@@ -24,21 +25,23 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
 
     public function supports(Request $request)
     {
-        return $request->headers->has('Authorization');
+        return $request->headers->has('Authorization') && 0 === strpos($request->headers->get('Authorization'), 'Bearer ');
     }
 
     public function getCredentials(Request $request)
     {
-        return $request->headers->get('Authorization');
+        return substr($request->headers->get('Authorization'), 7);
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        if (null === $credentials) {
-            return null;
+        $token = $this->em->getRepository(AuthenticationToken::class)->findOneBy(['token' => $credentials]);
+
+        if (!$token) {
+            throw new CustomUserMessageAuthenticationException('Invalid API Token');
         }
 
-        return $this->em->getRepository(User::class)->findOneBy(['token' => $credentials]);
+        return $token->getUser();
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -63,7 +66,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     public function start(Request $request, AuthenticationException $authException = null)
     {
         $data = [
-            'message' => 'Authentication Required'
+            'message' => 'API Token not found'
         ];
 
         return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
