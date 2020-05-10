@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use App\Form\UserType;
+use App\Entity\AuthenticationToken;
 use App\Entity\User;
 
 /**
@@ -63,5 +64,30 @@ class UserController extends AbstractController
         }
 
         return $form;
+    }
+
+    /**
+     * Creates an AuthenticationToken resource.
+     *
+     * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"createToken"})
+     * @Rest\Post("/users/login")
+     *
+     * @SWG\Tag(name="User")
+     * @SWG\Parameter(
+     *     name="user",
+     *     in="body",
+     *     description="The User resource.",
+     *     @Model(type=UserType::class)
+     * )
+     * @SWG\Response(
+     *     response=201,
+     *     description="AuthenticationToken resource created.",
+     *     @SWG\Schema(
+     *         ref=@Model(type=AuthenticationToken::class, groups={"createToken"})
+     *     )
+     * )
+     */
+    public function loginUser(Request $request)
+    {
     }
 }

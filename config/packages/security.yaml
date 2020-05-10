@@ -15,12 +15,14 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: ~
-            logout: ~
+            anonymous: true
+            stateless: true
             provider: app_user_provider
             guard:
                 authenticators:
+                    - App\Security\LoginAuthenticator
                     - App\Security\TokenAuthenticator
+                entry_point: App\Security\TokenAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

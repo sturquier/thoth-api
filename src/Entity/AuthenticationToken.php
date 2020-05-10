@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthenticationTokenRepository")
@@ -18,6 +19,7 @@ class AuthenticationToken
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"createToken"})
      */
     private $token;
 
@@ -27,9 +29,10 @@ class AuthenticationToken
      */
     private $user;
 
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->token = rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
+        $this->user = $user;
     }
 
     public function getId(): ?int
