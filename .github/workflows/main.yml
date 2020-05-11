@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: composer install
+      - name: Run migrations
+        run: php bin/console doctrine:migrations:migrate --no-interaction
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Run tests
         run: |
           cp phpunit.xml.dist phpunit.xml
