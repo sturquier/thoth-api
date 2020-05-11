@@ -16,14 +16,14 @@ class UserControllerTest extends AbstractControllerTest
         parent::tearDown();
     }
 
-    public function testRequestWithoutPayload()
+    public function testUserCreationWithoutPayload()
     {
         $this->client->request('POST', '/users');
 
         $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testRequestWithPartialEmail()
+    public function testUserCreationWithPartialEmail()
     {
         $this->client->request('POST', '/users', [
             'email' => 'foo',
@@ -33,7 +33,7 @@ class UserControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_BAD_REQUEST, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testRequestWithPartialPassword()
+    public function testUserCreationWithPartialPassword()
     {
         $this->client->request('POST', '/users', [
             'email' => 'foo@bar.com',
@@ -43,7 +43,7 @@ class UserControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_BAD_REQUEST, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testRequestWithCompletePayload()
+    public function testUserCreationWithCompletePayload()
     {
         $this->client->request('POST', '/users', [
             'email' => 'foo@bar.com',
@@ -51,5 +51,22 @@ class UserControllerTest extends AbstractControllerTest
         ]);
 
         $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testUserLoginWithoutPayload()
+    {
+        $this->client->request('POST', '/users/login');
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testUserLoginWithPayload()
+    {
+        $this->client->request('POST', '/users/login', [
+            'email' => 'foo@bar.com',
+            'password' => 'fooBar1'
+        ]);
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $this->client->getResponse()->getStatusCode());
     }
 }

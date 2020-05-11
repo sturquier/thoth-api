@@ -3,7 +3,6 @@
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken;
 use App\Entity\User;
 
@@ -26,18 +25,16 @@ abstract class AbstractControllerTest extends WebTestCase
     protected function login()
     {
         $container = self::$container;
-        $session = $container->get('session');
-        $em = $container->get('doctrine.orm.entity_manager');
+        $security = $container->get('security.token_storage');
 
         $firewallName = 'main';
 
-        $user = $em->getRepository(User::class)->findOneBy([]);
+        $user = new User();
+        $user->setEmail('foo@bar.com');
+        $user->setPassword('fooBar1');
+
         $token = new PostAuthenticationGuardToken($user, $firewallName, $user->getRoles());
 
-        $session->set('_security_'.$firewallName, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
+        $security->setToken($token);
     }
 }

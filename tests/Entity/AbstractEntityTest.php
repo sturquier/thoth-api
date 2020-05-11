@@ -4,12 +4,14 @@ namespace App\Tests\Entity;
 
 use PHPUnit\Framework\TestCase;
 use App\Entity\Article;
+use App\Entity\AuthenticationToken;
 use App\Entity\User;
 use App\Entity\Website;
 
 abstract class AbstractEntityTest extends TestCase
 {
     protected $article;
+    protected $authenticationToken;
     protected $user;
     protected $website;
 
@@ -24,6 +26,8 @@ abstract class AbstractEntityTest extends TestCase
         );
         $this->user = new User();
         $this->website = new Website();
+
+        $this->authenticationToken = new AuthenticationToken($this->user);
     }
 
     protected function tearDown(): void
@@ -31,5 +35,7 @@ abstract class AbstractEntityTest extends TestCase
         $this->article = null;
         $this->user = null;
         $this->website = null;
+
+        $this->authenticationToken = null;
     }
 }
