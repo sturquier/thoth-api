@@ -12,6 +12,10 @@ class WebsiteFixtures extends Fixture
     {
         $websites = [
         [
+            'name' => 'Alligator',
+            'url' => 'https://alligator.io/explore'
+        ],
+        [
             'name' => 'CSS Tricks',
             'url' => 'https://css-tricks.com/archives/'
         ],
@@ -44,20 +48,12 @@ class WebsiteFixtures extends Fixture
             'url' => 'https://blog.octo.com/'
         ],
         [
-            'name' => 'Putain de Code',
-            'url' => 'https://putaindecode.io/articles'
-        ],
-        [
             'name' => 'Scotch.io',
             'url' => 'https://scotch.io/tutorials'
         ],
         [
-            'name' => 'Think To Code',
-            'url' => 'https://thinktocode.com/'
-        ],
-        [
             'name' => 'Towards Data Science',
-            'url' => 'https://towardsdatascience.com/'
+            'url' => 'https://towardsdatascience.com/latest'
         ]];
 
         foreach ($websites as $ws) {

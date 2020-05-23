@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "brainmaestro/composer-git-hooks": {
         "version": "v2.8.3"
     },
@@ -135,6 +138,9 @@
             "ref": "cad41ef93d6150067ae2bb3c7fd729492dff6f0a"
         }
     },
+    "gedmo/doctrine-extensions": {
+        "version": "v2.4.41"
+    },
     "hoa/compiler": {
         "version": "3.17.08.08"
     },
@@ -256,6 +262,18 @@
         },
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "./config/packages/stof_doctrine_extensions.yaml"
         ]
     },
     "symfony/apache-pack": {

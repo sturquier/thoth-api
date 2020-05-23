@@ -20,6 +20,7 @@ class WebsiteEntityTest extends AbstractEntityTest
     {
         $this->assertNull($this->website->getId());
         $this->assertNull($this->website->getName());
+        $this->assertNull($this->website->getSlug());
         $this->assertNull($this->website->getUrl());
         $this->assertEquals(new ArrayCollection(), $this->website->getArticles());
     }
@@ -28,6 +29,12 @@ class WebsiteEntityTest extends AbstractEntityTest
     {
         $this->website->setName($name);
         $this->assertEquals($name, $this->website->getName());
+    }
+
+    public function testSlug($slug = 'website-name')
+    {
+        $this->website->setSlug($slug);
+        $this->assertEquals($slug, $this->website->getSlug());
     }
 
     public function testUrl($url = 'https://www.website.com')
