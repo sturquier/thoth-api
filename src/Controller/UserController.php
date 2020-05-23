@@ -76,7 +76,7 @@ class UserController extends AbstractController
      * @SWG\Parameter(
      *     name="user",
      *     in="body",
-     *     description="The User resource.",
+     *     description="The User resource to be authenticated.",
      *     @Model(type=UserType::class)
      * )
      * @SWG\Response(
