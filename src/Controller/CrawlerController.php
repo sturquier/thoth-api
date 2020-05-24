@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Swagger\Annotations as SWG;
 use App\Service\CrawlerFactory;
+use App\Entity\Article;
 use App\Entity\Website;
 
 /**
@@ -36,7 +37,7 @@ class CrawlerController extends AbstractController
      * )
      * @SWG\Response(
      *     response=201,
-     *     description="Article collection created."
+     *     description="Website successfully crawled."
      * )
      */
     public function crawlWebsite(Request $request, CrawlerFactory $crawlerFactory)
@@ -50,6 +51,21 @@ class CrawlerController extends AbstractController
 
         $articles = $crawlerFactory::makeCrawler($website)->crawl();
 
-        return $articles;
+        foreach ($articles ?? [] as $art) {
+            $article = new Article(
+                $art['title'],
+                $art['description'],
+                $art['createdAt'],
+                $art['url'],
+                $art['image']
+            );
+
+            $article->setWebsite($website);
+
+            $em->persist($article);
+            $em->flush();
+        }
+
+        return new JsonResponse(['message' => 'Website successfully crawled.'], Response::HTTP_CREATED);
     }
 }

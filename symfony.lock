@@ -117,6 +117,9 @@
     "exsyst/swagger": {
         "version": "v0.4.1"
     },
+    "fabpot/goutte": {
+        "version": "v4.0.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -316,6 +319,9 @@
             "./config/bootstrap.php"
         ]
     },
+    "symfony/css-selector": {
+        "version": "v4.4.8"
+    },
     "symfony/debug": {
         "version": "v4.4.7"
     },
@@ -380,6 +386,12 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v4.4.8"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.8"
     },
     "symfony/http-foundation": {
         "version": "v4.4.7"
