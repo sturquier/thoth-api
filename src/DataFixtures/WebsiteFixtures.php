@@ -32,10 +32,6 @@ class WebsiteFixtures extends Fixture
             'url' => 'https://laravel-news.com/blog'
         ],
         [
-            'name' => 'LinuxTechLab',
-            'url' => 'https://linuxtechlab.com'
-        ],
-        [
             'name' => 'LogRocket',
             'url' => 'https://blog.logrocket.com'
         ],
