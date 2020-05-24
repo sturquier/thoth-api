@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\Website;
 use App\Service\CrawlerFactory;
 use App\Service\Crawlers\OctoCrawler;
+use App\Service\Crawlers\ScotchCrawler;
 
 class CrawlerFactoryTest extends WebTestCase
 {
@@ -29,6 +30,14 @@ class CrawlerFactoryTest extends WebTestCase
         $this->crawlerFactory = null;
     }
 
+    public function testCrawlerMakingWithWrongWebsite()
+    {
+        $website = new Website();
+        $website->setSlug('lorem-ipsum');
+
+        $this->assertNull($this->crawlerFactory::makeCrawler($website));
+    }
+
     public function testCrawlerMakingWithOctoWebsite()
     {
         $website = self::$container->get('doctrine')->getRepository(Website::class)->findOneBy(['slug' => 'octo-talks']);
@@ -36,11 +45,10 @@ class CrawlerFactoryTest extends WebTestCase
         $this->assertTrue($this->crawlerFactory::makeCrawler($website) instanceof OctoCrawler);
     }
 
-    public function testCrawlerMakingWithWrongWebsite()
+    public function testCrawlerMakingWithScotchWebsite()
     {
-        $website = new Website();
-        $website->setSlug('lorem-ipsum');
+        $website = self::$container->get('doctrine')->getRepository(Website::class)->findOneBy(['slug' => 'scotch-io']);
 
-        $this->assertNull($this->crawlerFactory::makeCrawler($website));
+        $this->assertTrue($this->crawlerFactory::makeCrawler($website) instanceof ScotchCrawler);
     }
 }

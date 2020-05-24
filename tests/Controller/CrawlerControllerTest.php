@@ -23,7 +23,7 @@ class CrawlerControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testAuthorizedRequestWithWrongPayload()
+    public function testAuthorizedRequestWithWrongWebsite()
     {
         $this->login();
 
@@ -35,11 +35,23 @@ class CrawlerControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_NOT_FOUND, $this->client->getResponse()->getStatusCode());
     }
 
-    public function testAuthorizedRequestWithRightPayload()
+    public function testAuthorizedRequestWithOctoWebsite()
     {
         $this->login();
 
         $slug = 'octo-talks';
+        $this->client->request('POST', '/crawl', [
+            'slug' => $slug
+        ]);
+
+        $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testAuthorizedRequestWithScotchWebsite()
+    {
+        $this->login();
+
+        $slug = 'scotch-io';
         $this->client->request('POST', '/crawl', [
             'slug' => $slug
         ]);

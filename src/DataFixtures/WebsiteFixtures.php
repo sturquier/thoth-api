@@ -17,15 +17,15 @@ class WebsiteFixtures extends Fixture
         ],
         [
             'name' => 'CSS Tricks',
-            'url' => 'https://css-tricks.com/archives/'
+            'url' => 'https://css-tricks.com/archives'
         ],
         [
             'name' => 'CodeBurst',
-            'url' => 'https://codeburst.io/'
+            'url' => 'https://codeburst.io'
         ],
         [
             'name' => 'Hackernoon',
-            'url' => 'https://hackernoon.com/tagged/coding/'
+            'url' => 'https://hackernoon.com/tagged/coding'
         ],
         [
             'name' => 'Laravel News',
@@ -33,23 +33,23 @@ class WebsiteFixtures extends Fixture
         ],
         [
             'name' => 'LinuxTechLab',
-            'url' => 'https://linuxtechlab.com/'
+            'url' => 'https://linuxtechlab.com'
         ],
         [
             'name' => 'LogRocket',
-            'url' => 'https://blog.logrocket.com/'
+            'url' => 'https://blog.logrocket.com'
         ],
         [
             'name' => 'NetBasal',
-            'url' => 'https://netbasal.com/'
+            'url' => 'https://netbasal.com'
         ],
         [
             'name' => 'Octo Talks',
-            'url' => 'https://blog.octo.com/'
+            'url' => 'https://blog.octo.com'
         ],
         [
             'name' => 'Scotch.io',
-            'url' => 'https://scotch.io/tutorials'
+            'url' => 'https://scotch.io'
         ],
         [
             'name' => 'Towards Data Science',

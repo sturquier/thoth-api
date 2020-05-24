@@ -7,21 +7,23 @@ use App\Entity\Website;
 
 abstract class AbstractCrawler
 {
-    protected $client;
     protected $articles;
+    protected $client;
     protected $response;
+    protected $website;
 
     public function __construct(Website $website)
     {
-        $this->client = new Client();
         $this->articles = [];
+        $this->client = new Client();
+        $this->website = $website;
 
-        $this->setResponse($website);
+        $this->setResponse();
     }
 
-    private function setResponse(Website $website)
+    private function setResponse()
     {
-        $this->response = $this->client->request('GET', $website->getUrl());
+        $this->response = $this->client->request('GET', $this->website->getUrl());
 
         return $this;
     }
