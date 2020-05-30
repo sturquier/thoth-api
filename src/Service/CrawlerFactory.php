@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use App\Entity\Website;
+use App\Service\Crawlers\CodeBurstCrawler;
+use App\Service\Crawlers\CSSTricksCrawler;
 use App\Service\Crawlers\LaravelNewsCrawler;
 use App\Service\Crawlers\LogRocketCrawler;
 use App\Service\Crawlers\NetBasalCrawler;
@@ -15,6 +17,10 @@ class CrawlerFactory
     public static function makeCrawler(Website $website)
     {
         switch ($website->getSlug()) {
+            case 'codeburst':
+                return new CodeBurstCrawler($website);
+            case 'css-tricks':
+                return new CSSTricksCrawler($website);
             case 'laravel-news':
                 return new LaravelNewsCrawler($website);
             case 'logrocket':

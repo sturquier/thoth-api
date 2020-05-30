@@ -5,6 +5,8 @@ namespace App\Tests\Service;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\Website;
 use App\Service\CrawlerFactory;
+use App\Service\Crawlers\CodeBurstCrawler;
+use App\Service\Crawlers\CSSTricksCrawler;
 use App\Service\Crawlers\LaravelNewsCrawler;
 use App\Service\Crawlers\LogRocketCrawler;
 use App\Service\Crawlers\NetBasalCrawler;
@@ -40,6 +42,20 @@ class CrawlerFactoryTest extends WebTestCase
         $website->setSlug('lorem-ipsum');
 
         $this->assertNull($this->crawlerFactory::makeCrawler($website));
+    }
+
+    public function testCrawlerMakingWithCodeBurstWebsite()
+    {
+        $website = self::$container->get('doctrine')->getRepository(Website::class)->findOneBy(['slug' => 'codeburst']);
+
+        $this->assertTrue($this->crawlerFactory::makeCrawler($website) instanceof CodeBurstCrawler);
+    }
+
+    public function testCrawlerMakingWithCSSTricksWebsite()
+    {
+        $website = self::$container->get('doctrine')->getRepository(Website::class)->findOneBy(['slug' => 'css-tricks']);
+
+        $this->assertTrue($this->crawlerFactory::makeCrawler($website) instanceof CSSTricksCrawler);
     }
 
     public function testCrawlerMakingWithLaravelNewsWebsite()

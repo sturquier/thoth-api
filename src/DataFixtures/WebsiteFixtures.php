@@ -12,20 +12,12 @@ class WebsiteFixtures extends Fixture
     {
         $websites = [
         [
-            'name' => 'Alligator',
-            'url' => 'https://alligator.io/explore'
-        ],
-        [
             'name' => 'CSS Tricks',
             'url' => 'https://css-tricks.com/archives'
         ],
         [
             'name' => 'CodeBurst',
             'url' => 'https://codeburst.io'
-        ],
-        [
-            'name' => 'Hackernoon',
-            'url' => 'https://hackernoon.com/tagged/coding'
         ],
         [
             'name' => 'Laravel News',

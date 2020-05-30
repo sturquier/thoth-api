@@ -35,6 +35,30 @@ class CrawlerControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_NOT_FOUND, $this->client->getResponse()->getStatusCode());
     }
 
+    public function testAuthorizedRequestWithCodeBurstWebsite()
+    {
+        $this->login();
+
+        $slug = 'codeburst';
+        $this->client->request('POST', '/crawl', [
+            'slug' => $slug
+        ]);
+
+        $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testAuthorizedRequestWithCSSTricksWebsite()
+    {
+        $this->login();
+
+        $slug = 'css-tricks';
+        $this->client->request('POST', '/crawl', [
+            'slug' => $slug
+        ]);
+
+        $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
+    }
+
     public function testAuthorizedRequestWithLaravelNewsWebsite()
     {
         $this->login();
