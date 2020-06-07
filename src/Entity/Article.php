@@ -53,6 +53,7 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Website", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @JMS\Groups({"getArticles"})
      */
     private $website;
 

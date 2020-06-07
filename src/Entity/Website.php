@@ -20,13 +20,13 @@ class Website
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @JMS\Groups({"getWebsites"})
+     * @JMS\Groups({"getWebsites", "getArticles"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"getWebsites"})
+     * @JMS\Groups({"getWebsites", "getArticles"})
      */
     private $name;
 
