@@ -51,6 +51,12 @@ class CrawlerController extends AbstractController
 
         $articles = $crawlerFactory::makeCrawler($website)->crawl();
 
+        if ($articles) {
+            array_map(function ($article) use ($em) {
+                $em->remove($article);
+            }, $em->getRepository(Article::class)->findBy(['website' => $website]));
+        }
+
         foreach ($articles ?? [] as $art) {
             $article = new Article(
                 $art['title'],
