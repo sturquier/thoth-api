@@ -24,9 +24,9 @@ class LaravelNewsCrawler extends AbstractCrawler
     public function crawl()
     {
         $this->response->filter('div.card--post')->each(function ($node, $index) {
-            $this->articles[$index]['title'] = $node->filter('div.post__content > h2 > a')->text('', true);
-            $this->articles[$index]['description'] = $node->filter('div.post__content > p')->text('', true);
-            $this->articles[$index]['createdAt'] = $this->formatCreationDate($node->filter('div.post__content > span')->text('', true));
+            $this->articles[$index]['title'] = $node->filter('div.prose > h2 > a')->text('', true);
+            $this->articles[$index]['description'] = $node->filter('div.prose > p')->text('', true);
+            $this->articles[$index]['createdAt'] = $this->formatCreationDate($node->filter('div.prose > span')->text('', true));
             $this->articles[$index]['url'] = $this->formatUrl($node->filter('div.post__image > a')->attr('href'));
             $this->articles[$index]['image'] = $this->formatImage($node->filter('div.post__image > a > img')->image()->getUri());
         });
