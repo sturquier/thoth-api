@@ -16,44 +16,44 @@ class Article
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Website", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
-     * @JMS\Groups({"getArticles"})
+     * @JMS\Groups({"getArticles", "getMyFavorites"})
      */
     private $website;
 
