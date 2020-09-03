@@ -5,6 +5,7 @@ namespace App\Tests\Entity;
 use PHPUnit\Framework\TestCase;
 use App\Entity\Article;
 use App\Entity\AuthenticationToken;
+use App\Entity\Favorite;
 use App\Entity\User;
 use App\Entity\Website;
 
@@ -12,6 +13,7 @@ abstract class AbstractEntityTest extends TestCase
 {
     protected $article;
     protected $authenticationToken;
+    protected $favorite;
     protected $user;
     protected $website;
 
@@ -24,6 +26,7 @@ abstract class AbstractEntityTest extends TestCase
             'https://www.article-url.com',
             'https://www.article-img.com'
         );
+        $this->favorite = new Favorite();
         $this->user = new User();
         $this->website = new Website();
 
@@ -33,6 +36,7 @@ abstract class AbstractEntityTest extends TestCase
     protected function tearDown(): void
     {
         $this->article = null;
+        $this->favorite = null;
         $this->user = null;
         $this->website = null;
 

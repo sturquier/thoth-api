@@ -2,6 +2,8 @@
 
 namespace App\Tests\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class UserEntityTest extends AbstractEntityTest
 {
     protected function setUp(): void
@@ -23,6 +25,7 @@ class UserEntityTest extends AbstractEntityTest
         $this->assertEquals('', $this->user->getPassword());
         $this->assertNull($this->user->getSalt());
         $this->assertNull($this->user->eraseCredentials());
+        $this->assertEquals(new ArrayCollection(), $this->user->getFavorites());
     }
 
     public function testEmail($email = 'foo@bar.com')
@@ -41,5 +44,20 @@ class UserEntityTest extends AbstractEntityTest
     {
         $this->user->setPassword($password);
         $this->assertEquals($password, $this->user->getPassword());
+    }
+
+    public function testFavoriteAddition()
+    {
+        $this->assertTrue($this->user->getFavorites()->isEmpty());
+        $this->user->addFavorite($this->favorite);
+        $this->assertTrue(!$this->user->getFavorites()->isEmpty());
+    }
+
+    public function testFavoriteRemoval()
+    {
+        $this->user->addFavorite($this->favorite);
+        $this->assertTrue(!$this->user->getFavorites()->isEmpty());
+        $this->user->removeFavorite($this->favorite);
+        $this->assertTrue($this->user->getFavorites()->isEmpty());
     }
 }
