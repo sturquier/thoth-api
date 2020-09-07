@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FavoriteRepository")
@@ -13,6 +14,7 @@ class Favorite
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @JMS\Groups({"createFavorite"})
      */
     private $id;
 
@@ -27,6 +29,11 @@ class Favorite
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;
+
+    public function __construct($user)
+    {
+        $this->setUser($user);
+    }
 
     public function getId(): ?int
     {

@@ -26,20 +26,20 @@ abstract class AbstractEntityTest extends TestCase
             'https://www.article-url.com',
             'https://www.article-img.com'
         );
-        $this->favorite = new Favorite();
         $this->user = new User();
         $this->website = new Website();
 
         $this->authenticationToken = new AuthenticationToken($this->user);
+        $this->favorite = new Favorite($this->user);
     }
 
     protected function tearDown(): void
     {
         $this->article = null;
-        $this->favorite = null;
         $this->user = null;
         $this->website = null;
 
         $this->authenticationToken = null;
+        $this->favorite = null;
     }
 }
