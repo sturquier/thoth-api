@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
@@ -57,6 +59,11 @@ class Article
      */
     private $website;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Favorite", mappedBy="article", cascade={"remove"})
+     */
+    private $favorites;
+
     public function __construct($title, $description, $createdAt, $url, $image)
     {
         $this->setTitle($title);
@@ -64,6 +71,8 @@ class Article
         $this->setCreatedAt($createdAt);
         $this->setUrl($url);
         $this->setImage($image);
+
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -141,5 +150,13 @@ class Article
         $this->website = $website;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Favorite[]
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
     }
 }

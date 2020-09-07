@@ -25,7 +25,7 @@ class Favorite
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="favorites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;

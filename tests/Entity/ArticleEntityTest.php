@@ -2,6 +2,8 @@
 
 namespace App\Tests\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class ArticleEntityTest extends AbstractEntityTest
 {
     protected function setUp(): void
@@ -22,6 +24,7 @@ class ArticleEntityTest extends AbstractEntityTest
         $this->assertTrue($this->article->getCreatedAt() instanceof \DateTime);
         $this->assertEquals('https://www.article-url.com', $this->article->getUrl());
         $this->assertEquals('https://www.article-img.com', $this->article->getImage());
+        $this->assertEquals(new ArrayCollection(), $this->article->getFavorites());
     }
 
     public function testTitle($title = 'New title')
