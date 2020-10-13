@@ -67,7 +67,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Creates an AuthenticationToken resource.
+     * Creates a AuthenticationToken resource.
      *
      * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"createToken"})
      * @Rest\Post("/users/login")
