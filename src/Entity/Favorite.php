@@ -27,6 +27,7 @@ class Favorite
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="favorites")
      * @ORM\JoinColumn(nullable=false)
+     * @JMS\Groups({"createFavorite"})
      */
     private $article;
 
