@@ -18,14 +18,14 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @JMS\Groups({"getMe", "createUser"})
+     * @JMS\Groups({"getMe", "patchMe", "createUser"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="The email '{{ value }}' is not a valid email.")
-     * @JMS\Groups({"getMe", "createUser"})
+     * @JMS\Groups({"getMe", "patchMe", "createUser"})
      */
     private $email;
 

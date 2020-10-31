@@ -32,6 +32,22 @@ class MeControllerTest extends AbstractControllerTest
         $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
     }
 
+    public function testUnauthorizedRequestOnProfileUpdate()
+    {
+        $this->client->request('PATCH', '/me');
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testAuthorizedRequestOnProfileUpdate()
+    {
+        $this->login();
+
+        $this->client->request('PATCH', '/me');
+
+        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
+    }
+
     public function testUnauthorizedRequestOnFavoriteArticlesSearch()
     {
         $this->client->request('GET', '/me/favorites');
