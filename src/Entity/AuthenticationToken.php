@@ -24,7 +24,7 @@ class AuthenticationToken
     private $token;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="authenticationTokens")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

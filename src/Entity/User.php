@@ -42,13 +42,19 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Favorite", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Favorite", mappedBy="user", cascade={"remove"})
      */
     private $favorites;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\AuthenticationToken", mappedBy="user", cascade={"remove"})
+     */
+    private $authenticationTokens;
 
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
+        $this->authenticationTokens = new ArrayCollection();
     }
 
     public function getId(): ?int
