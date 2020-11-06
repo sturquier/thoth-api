@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
+use App\Form\LoginType;
 use App\Form\UserType;
 use App\Entity\AuthenticationToken;
 use App\Entity\User;
@@ -77,7 +78,7 @@ class UserController extends AbstractController
      *     name="user",
      *     in="body",
      *     description="The User resource to be authenticated.",
-     *     @Model(type=UserType::class)
+     *     @Model(type=LoginType::class)
      * )
      * @SWG\Response(
      *     response=201,

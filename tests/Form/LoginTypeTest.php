@@ -2,27 +2,25 @@
 
 namespace App\Tests\Form;
 
-use App\Form\MeType;
+use App\Form\LoginType;
 use App\Entity\User;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class MeTypeTest extends TypeTestCase
+class LoginTypeTest extends TypeTestCase
 {
     public function testSubmitValidData()
     {
         $formData = [
-            'firstName' => 'Foo',
-            'lastName' => 'Bar',
-            'email' => 'foo@bar.com'
+            'email' => 'foo@bar.com',
+            'password' => 'fooBar1'
         ];
 
         $userToCompare = new User();
-        $form = $this->factory->create(MeType::class, $userToCompare);
+        $form = $this->factory->create(LoginType::class, $userToCompare);
 
         $user = new User();
-        $user->setFirstName($formData['firstName']);
-        $user->setLastName($formData['lastName']);
         $user->setEmail($formData['email']);
+        $user->setPassword($formData['password']);
 
         $form->submit($formData);
 

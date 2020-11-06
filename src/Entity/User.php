@@ -23,6 +23,20 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
+     * @JMS\Groups({"getMe", "patchMe", "createUser"})
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
+     * @JMS\Groups({"getMe", "patchMe", "createUser"})
+     */
+    private $lastName;
+
+    /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="The email '{{ value }}' is not a valid email.")
      * @JMS\Groups({"getMe", "patchMe", "createUser"})
@@ -60,6 +74,30 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
     }
 
     public function getEmail(): ?string

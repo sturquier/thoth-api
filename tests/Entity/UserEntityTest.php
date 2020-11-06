@@ -19,6 +19,8 @@ class UserEntityTest extends AbstractEntityTest
     public function testConstructor()
     {
         $this->assertNull($this->user->getId());
+        $this->assertNull($this->user->getFirstName());
+        $this->assertNull($this->user->getLastName());
         $this->assertNull($this->user->getEmail());
         $this->assertEquals('', $this->user->getUsername());
         $this->assertEquals(['ROLE_USER'], $this->user->getRoles());
@@ -26,6 +28,18 @@ class UserEntityTest extends AbstractEntityTest
         $this->assertNull($this->user->getSalt());
         $this->assertNull($this->user->eraseCredentials());
         $this->assertEquals(new ArrayCollection(), $this->user->getFavorites());
+    }
+
+    public function testFirstName($firstName = 'Foo')
+    {
+        $this->user->setFirstName($firstName);
+        $this->assertEquals($firstName, $this->user->getFirstName());
+    }
+
+    public function testLastName($lastName = 'Bar')
+    {
+        $this->user->setLastName($lastName);
+        $this->assertEquals($lastName, $this->user->getLastName());
     }
 
     public function testEmail($email = 'foo@bar.com')

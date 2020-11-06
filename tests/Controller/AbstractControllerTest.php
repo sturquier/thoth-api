@@ -30,6 +30,8 @@ abstract class AbstractControllerTest extends WebTestCase
         $firewallName = 'main';
 
         $user = new User();
+        $user->setFirstName('Foo');
+        $user->setLastName('Bar');
         $user->setEmail('foo@bar.com');
         $user->setPassword('fooBar1');
 

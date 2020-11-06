@@ -46,6 +46,8 @@ class UserControllerTest extends AbstractControllerTest
     public function testUserCreationWithCompletePayload()
     {
         $this->client->request('POST', '/users', [
+            'firstName' => 'Foo',
+            'lastName' => 'Bar',
             'email' => 'foo@bar.com',
             'password' => 'fooBar1'
         ]);

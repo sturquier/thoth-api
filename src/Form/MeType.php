@@ -13,6 +13,8 @@ class MeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('firstName', TextType::class, ['required' => true])
+            ->add('lastName', TextType::class, ['required' => true])
             ->add('email', TextType::class, ['required' => true])
         ;
     }

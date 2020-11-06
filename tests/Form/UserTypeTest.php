@@ -11,6 +11,8 @@ class UserTypeTest extends TypeTestCase
     public function testSubmitValidData()
     {
         $formData = [
+            'firstName' => 'Foo',
+            'lastName' => 'Bar',
             'email' => 'foo@bar.com',
             'password' => 'fooBar1'
         ];
@@ -19,6 +21,8 @@ class UserTypeTest extends TypeTestCase
         $form = $this->factory->create(UserType::class, $userToCompare);
 
         $user = new User();
+        $user->setFirstName($formData['firstName']);
+        $user->setLastName($formData['lastName']);
         $user->setEmail($formData['email']);
         $user->setPassword($formData['password']);
 
