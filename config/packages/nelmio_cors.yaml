@@ -9,5 +9,5 @@ nelmio_cors:
         '^/':
             allow_origin: ['*']
             allow_headers: ['Content-Type', 'Authorization']
-            allow_methods: ['GET', 'POST']
+            allow_methods: ['GET', 'POST', 'PATCH']
             max_age: 3600
