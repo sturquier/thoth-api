@@ -13,7 +13,8 @@ class MeTypeTest extends TypeTestCase
         $formData = [
             'firstName' => 'Foo',
             'lastName' => 'Bar',
-            'email' => 'foo@bar.com'
+            'email' => 'foo@bar.com',
+            'password' => 'fooBar1'
         ];
 
         $userToCompare = new User();
@@ -23,6 +24,7 @@ class MeTypeTest extends TypeTestCase
         $user->setFirstName($formData['firstName']);
         $user->setLastName($formData['lastName']);
         $user->setEmail($formData['email']);
+        $user->setPassword($formData['password']);
 
         $form->submit($formData);
 
